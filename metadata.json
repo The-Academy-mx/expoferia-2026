@@ -1,0 +1,6 @@
+{
+  "name": "ExpoFeria 2026",
+  "description": "Consigue clientes en todo México en un solo día. Participa en la ExpoFeria 2026 y expón tu negocio ante una audiencia nacional.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

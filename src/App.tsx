@@ -673,34 +673,56 @@ export default function App() {
         </div>
       </section>
 
-    {/* COMMUNITY MODAL */}
-<AnimatePresence>
-  {selectedCommunity && (
-    <div 
-      onClick={() => setSelectedCommunity(null)} // Cierra al dar clic al fondo
-      className="fixed inset-0 z-[60] flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm cursor-pointer"
-    >
-      <motion.div 
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.9, opacity: 0 }}
-        onClick={(e) => e.stopPropagation()} // Evita que se cierre al dar clic dentro de la tarjeta
-        className="bg-white rounded-3xl overflow-hidden max-w-2xl w-full relative shadow-2xl cursor-default"
-      >
-        <button 
-          onClick={() => setSelectedCommunity(null)}
-          className="absolute top-4 right-4 p-2 bg-stone-100 rounded-full text-stone-500 hover:text-black transition-colors z-10"
-        >
-          <X className="w-6 h-6" />
-        </button>
-        
-        <div className="grid md:grid-cols-2">
-          {/* ... resto del contenido (imagen y textos) igual que antes ... */}
-        </div>
-      </motion.div>
-    </div>
-  )}
-</AnimatePresence>
+      {/* COMMUNITY MODAL */}
+      <AnimatePresence>
+        {selectedCommunity && (
+          <div 
+            onClick={() => setSelectedCommunity(null)}
+            className="fixed inset-0 z-[60] flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm cursor-pointer"
+          >
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-3xl overflow-hidden max-w-2xl w-full relative shadow-2xl cursor-default"
+            >
+              <button 
+                onClick={() => setSelectedCommunity(null)}
+                className="absolute top-4 right-4 p-2 bg-stone-100 rounded-full text-stone-500 hover:text-black transition-colors z-10"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              
+              <div className="grid md:grid-cols-2">
+                <div className="h-48 md:h-full">
+                  <img 
+                    src={selectedCommunity.img} 
+                    alt={selectedCommunity.title} 
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="p-8 md:p-10 flex flex-col justify-center">
+                  <span className="text-academy-ocean font-bold text-xs uppercase tracking-widest mb-2 block">Comunidad de</span>
+                  <h3 className="text-3xl font-extrabold text-stone-900 uppercase mb-6">{selectedCommunity.title}</h3>
+                  <div className="text-stone-600 leading-relaxed mb-8">
+                    {selectedCommunity.desc}
+                  </div>
+                  <a 
+                    href={selectedCommunity.waLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-3 bg-green-600 text-white font-extrabold uppercase px-8 py-4 rounded-xl hover:bg-green-700 transition-colors shadow-lg hover:shadow-green-200"
+                  >
+                    <MessageCircle className="w-5 h-5" /> Unirme a WhatsApp
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* FAQ & LOGISTICS */}
       <section className="py-20 md:py-32 px-6 max-w-6xl mx-auto text-center flex flex-col items-center">
